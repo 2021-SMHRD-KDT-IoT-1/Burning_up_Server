@@ -183,6 +183,8 @@ select * from FRXT_ALR;
 select * from FRF_INF;
 select * from FRXT_CLC;
 select * from FRXT_CHCK;
+select * from FRXT_AGN;
+select * from FRXT_PRE;
 
 -- 테이블 삭제
 drop table FIRE_USER;
@@ -191,6 +193,8 @@ drop table FRXT_ALR;
 drop table FRF_INF;
 drop table FRXT_CLC;
 drop table FRXT_CHCK;
+drop table FRXT_AGN;
+drop table FRXT_PRE;
 
 -- 시퀀스 삭제
 drop sequence NFC_NUM;
