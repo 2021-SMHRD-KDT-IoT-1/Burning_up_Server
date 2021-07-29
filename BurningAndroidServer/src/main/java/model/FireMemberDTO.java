@@ -1,6 +1,6 @@
 package model;
 
-public class MemberDTO {
+public class FireMemberDTO {
 	private String id;
 	private String pw;
 	private String name;
@@ -10,12 +10,8 @@ public class MemberDTO {
 	private String gen;
 	private String bir;
 	private int code;
-	
-	
-	
 
-
-	public MemberDTO(String id, String pw, String name, String tel, String addr, String b_name, String gen, String bir,
+	public FireMemberDTO(String id, String pw, String name, String tel, String addr, String b_name, String gen, String bir,
 			int code) {
 		super();
 		this.id = id;
