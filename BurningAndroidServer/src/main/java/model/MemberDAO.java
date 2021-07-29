@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FireMemberDAO {
+public class MemberDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	int cnt = 0;
@@ -42,7 +42,7 @@ public class FireMemberDAO {
 		}
 	}
 	
-public int join(FireMemberDTO member) {
+public int join(MemberDTO member) {
 		
 		conn();
 		
