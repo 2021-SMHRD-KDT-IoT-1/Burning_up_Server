@@ -6,11 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
 public class MemberDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	int cnt = 0;
 	ResultSet rs = null;
+	MemberDTO dto = null;
 
 	public void conn() {
 		try {
@@ -28,9 +31,9 @@ public class MemberDAO {
 
 	public void close() {
 		try {
-			if(rs != null) {
+			if (rs != null) {
 				rs.close();
-			}	
+			}
 			if (psmt != null) {
 				psmt.close();
 			}
@@ -41,13 +44,14 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
-public int join(MemberDTO member) {
-		
+
+	//회원가입
+	public int join(MemberDTO member) {
+
 		conn();
-		
+
 		try {
-			
+
 			String sql = "insert into fire_user values(?,?,?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getId());
@@ -59,50 +63,52 @@ public int join(MemberDTO member) {
 			psmt.setString(7, member.getGen());
 			psmt.setString(8, member.getBir());
 			psmt.setInt(9, member.getCode());
-			
-			
+
 			cnt = psmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
-		
+
 		return cnt;
 	}
 
-	public String login(String id, String pw) {
-		
-		String name = null;
+	//로그인
+	public MemberDTO login(MemberDTO logdto) {
 
 		conn();
-		
+
 		try {
-			
-			String sql = "select nick from fire_user where id=? and pw=?";
-			
+			String sql = "select * from fire_user where id=? and pw=?";
 			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-			
+
+			psmt.setString(1, logdto.getId());
+			psmt.setString(2, logdto.getPw());
+
 			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
-				name = rs.getString(1);
+
+			if (rs.next()) {
+				String id = rs.getString(1);
+				String pw = rs.getString(2);
+				String name = rs.getString(3);
+				String tel = rs.getString(4);
+				String addr = rs.getString(5);
+				String b_name = rs.getString(6);
+				String gen = rs.getString(7);
+				String bir = rs.getString(8);
+				int code = rs.getInt(9);
+
+				dto = new MemberDTO(id, pw, name, tel, addr, b_name, gen, bir, code);
 			}
-			
-			
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
+		return dto;
 		
-		return name;
-	}
-	
-	
+
+		}
 }
