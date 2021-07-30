@@ -33,7 +33,8 @@ public class UserJoinService extends HttpServlet {
 		String bir = request.getParameter("join_birth");
 		String code = request.getParameter("join_c");
 		
-		System.out.println("회원 정보"+id+"/"+pw+"/"+name+"/"+tel+"/"+gen+"/"+bir+"/"+code);
+		System.out.println("사용자 정보" + id + "/" + pw + "/" + name + "/" + tel + "/" + addr + "/" + b_name + "/" + gen
+				+ "/" + bir + "/" + code);
 		
 		MemberDTO usermember = new MemberDTO(id, pw, name, tel, addr, b_name, gen, bir, 2);
 		MemberDAO dao = new MemberDAO();

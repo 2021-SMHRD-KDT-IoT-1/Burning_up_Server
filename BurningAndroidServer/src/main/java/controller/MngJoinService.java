@@ -19,9 +19,9 @@ public class MngJoinService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//인코딩
+		// 인코딩
 		response.setContentType("text/plain; charset=euc-kr");
-		
+
 		System.out.println("요청 확인");
 
 		String id = request.getParameter("join_id");
@@ -34,7 +34,8 @@ public class MngJoinService extends HttpServlet {
 		String bir = request.getParameter("join_birth");
 		String code = request.getParameter("join_c");
 
-		System.out.println("회원 정보" + id + "/" + pw + "/" + name + "/" + tel + "/" + addr + "/" + b_name);
+		System.out.println("관리자 정보" + id + "/" + pw + "/" + name + "/" + tel + "/" + addr + "/" + b_name + "/" + gen
+				+ "/" + bir + "/" + code);
 
 		MemberDTO member = new MemberDTO(id, pw, name, tel, addr, b_name, gen, bir, 1);
 		MemberDAO dao = new MemberDAO();
