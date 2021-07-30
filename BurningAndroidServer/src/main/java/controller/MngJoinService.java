@@ -24,12 +24,13 @@ public class MngJoinService extends HttpServlet {
 		
 		System.out.println("요청 확인");
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String tel = request.getParameter("tel");
-		String addr = request.getParameter("adr");
-		String b_name = request.getParameter("bdname");
+		String id = request.getParameter("join_id");
+		String pw = request.getParameter("join_pw");
+		String name = request.getParameter("join_name");
+		String tel = request.getParameter("join_tel");
+		String addr = request.getParameter("join_adr");
+		String b_name = request.getParameter("join_bdname");
+		String code = request.getParameter("join_c");
 
 		System.out.println("회원 정보" + id + "/" + pw + "/" + name + "/" + tel + "/" + addr + "/" + b_name);
 
