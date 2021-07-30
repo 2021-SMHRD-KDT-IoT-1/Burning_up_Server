@@ -75,7 +75,6 @@ public class MemberDAO {
 	// 사용자 회원가입
 	public int UserJoin(MemberDTO usermember) {
 
-
 		try {
 
 			String sql = "insert into fire_user values(?,?,?,?,?,?,?,?,?)";
@@ -105,7 +104,7 @@ public class MemberDAO {
 	public int login(String id, String pw) {
 
 		int code = 0;
-		
+
 		conn();
 
 		try {
@@ -116,8 +115,8 @@ public class MemberDAO {
 			psmt.setString(2, pw);
 
 			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				code = rs.getInt("CODE");
 			}
 
@@ -127,6 +126,31 @@ public class MemberDAO {
 			close();
 		}
 		return code;
-
+	}
+	
+	//관리자 정보 수정
+	public int UserUpdate(MemberDTO UpdateDto) {
+		
+		conn();
+		
+		try {
+			
+			String sql = "update fire_user set pw = ?, name = ?, tel = ? where id = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, UpdateDto.getPw());
+			psmt.setString(2, UpdateDto.getName());
+			psmt.setString(3, UpdateDto.getTel());
+			psmt.setString(4, UpdateDto.getId());
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
 	}
 }

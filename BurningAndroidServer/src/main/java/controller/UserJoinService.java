@@ -18,8 +18,6 @@ public class UserJoinService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//인코딩
-		response.setContentType("text/plain; charset=euc-kr");
 		
 		System.out.println("요청 확인");
 		
