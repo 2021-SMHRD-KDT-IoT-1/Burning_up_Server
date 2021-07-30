@@ -25,6 +25,14 @@ public class MemberDTO {
 		this.code = code;
 	}
 	
+	public MemberDTO(String id, String pw, String name, String tel) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.tel = tel;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -97,5 +105,9 @@ public class MemberDTO {
 		this.code = code;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "MemberDTO [id="+ id + ", pw=" +pw+ ", name=" +name+ ", tel=" +tel+ ", addr=" +addr+
+				", b_name=" +b_name+ ", gen=" +gen+ ", bir=" +bir+ ", code=" +code+"]";
+	}
 }
