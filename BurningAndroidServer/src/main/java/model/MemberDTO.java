@@ -25,6 +25,16 @@ public class MemberDTO {
 		this.code = code;
 	}
 	
+	public MemberDTO(String id, String pw, String name, String tel, String addr, String b_name) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.tel = tel;
+		this.addr = addr;
+		this.b_name = b_name;
+	}
+	
 	public MemberDTO(String id, String pw, String name, String tel) {
 		super();
 		this.id = id;
