@@ -75,6 +75,8 @@ public class MemberDAO {
 	// 사용자 회원가입
 	public int UserJoin(MemberDTO usermember) {
 
+		conn();
+
 		try {
 
 			String sql = "insert into fire_user values(?,?,?,?,?,?,?,?,?)";
