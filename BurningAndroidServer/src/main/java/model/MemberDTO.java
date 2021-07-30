@@ -25,28 +25,6 @@ public class MemberDTO {
 		this.code = code;
 	}
 	
-	public MemberDTO(String id, String pw, String name, String tel, String addr, String b_name,	int code) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.tel = tel;
-		this.addr = addr;
-		this.b_name = b_name;
-		this.code = code;
-	}
-	
-	public MemberDTO(int code, String id, String pw, String name, String tel, String gen, String bir) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.tel = tel;
-		this.gen = gen;
-		this.bir = bir;
-		this.code = code;
-	}
-
 	public String getId() {
 		return id;
 	}

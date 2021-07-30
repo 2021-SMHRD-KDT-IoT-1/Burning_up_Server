@@ -30,11 +30,13 @@ public class MngJoinService extends HttpServlet {
 		String tel = request.getParameter("join_tel");
 		String addr = request.getParameter("join_adr");
 		String b_name = request.getParameter("join_bdname");
+		String gen = request.getParameter("join_gen");
+		String bir = request.getParameter("join_birth");
 		String code = request.getParameter("join_c");
 
 		System.out.println("회원 정보" + id + "/" + pw + "/" + name + "/" + tel + "/" + addr + "/" + b_name);
 
-		MemberDTO member = new MemberDTO(id, pw, name, tel, addr, b_name, 1);
+		MemberDTO member = new MemberDTO(id, pw, name, tel, addr, b_name, gen, bir, 1);
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.MngJoin(member);
 

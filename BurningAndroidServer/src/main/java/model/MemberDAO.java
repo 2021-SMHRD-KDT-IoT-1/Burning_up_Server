@@ -50,16 +50,17 @@ public class MemberDAO {
 
 		try {
 
-			String sql = "insert into fire_user values(?,?,?,?,?,?)";
+			String sql = "insert into fire_user values(?,?,?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
-
 			psmt.setString(1, member.getId());
 			psmt.setString(2, member.getPw());
 			psmt.setString(3, member.getName());
 			psmt.setString(4, member.getTel());
 			psmt.setString(5, member.getAddr());
 			psmt.setString(6, member.getB_name());
-
+			psmt.setString(7, member.getGen());
+			psmt.setString(8, member.getBir());
+			psmt.setInt(9, member.getCode());
 			cnt = psmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -74,18 +75,20 @@ public class MemberDAO {
 	// 사용자 회원가입
 	public int UserJoin(MemberDTO usermember) {
 
-		conn();
 
 		try {
 
-			String sql = "insert into fire_user values(?,?,?,?,?,?)";
+			String sql = "insert into fire_user values(?,?,?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, usermember.getId());
 			psmt.setString(2, usermember.getPw());
 			psmt.setString(3, usermember.getName());
 			psmt.setString(4, usermember.getTel());
-			psmt.setString(5, usermember.getGen());
-			psmt.setString(6, usermember.getBir());
+			psmt.setString(5, usermember.getAddr());
+			psmt.setString(6, usermember.getB_name());
+			psmt.setString(7, usermember.getGen());
+			psmt.setString(8, usermember.getBir());
+			psmt.setInt(9, usermember.getCode());
 
 			cnt = psmt.executeUpdate();
 
