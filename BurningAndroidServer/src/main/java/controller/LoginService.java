@@ -16,6 +16,8 @@ public class LoginService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//인코딩
+		response.setContentType("text/plain; charset=euc-kr");
 		
 		String id = request.getParameter("login_id");
 		String pw = request.getParameter("login_pw");
@@ -26,6 +28,7 @@ public class LoginService extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
+		//코드가 1이나 2일 경우만 로그인 값을 넘겨줌
 		if(code == 1 || code == 2) {
 			out.print(code);
 		}else {
