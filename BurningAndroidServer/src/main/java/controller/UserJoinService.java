@@ -23,14 +23,15 @@ public class UserJoinService extends HttpServlet {
 		
 		System.out.println("요청 확인");
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String tel = request.getParameter("tel");
-		String gen = request.getParameter("gen");
-		String bir = request.getParameter("birth");
+		String code = request.getParameter("join_c");
+		String id = request.getParameter("join_id");
+		String pw = request.getParameter("join_pw");
+		String name = request.getParameter("join_name");
+		String tel = request.getParameter("join_tel");
+		String gen = request.getParameter("join_gen");
+		String bir = request.getParameter("join_birth");
 		
-		System.out.println("회원 정보"+id+"/"+pw+"/"+name+"/"+tel+"/"+gen+"/"+bir);
+		System.out.println("회원 정보"+id+"/"+pw+"/"+name+"/"+tel+"/"+gen+"/"+bir+"/"+code);
 		
 		MemberDTO usermember = new MemberDTO(2, id, pw, name, tel, gen, bir);
 		MemberDAO dao = new MemberDAO();
