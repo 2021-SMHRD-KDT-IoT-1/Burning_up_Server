@@ -12,7 +12,9 @@ public class MemberDAO {
 	PreparedStatement psmt = null;
 	int cnt = 0;
 	ResultSet rs = null;
- 
+	MemberDTO dto = null;
+	ArrayList<MemberDTO> members = null;
+
 	public void conn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -129,66 +131,61 @@ public class MemberDAO {
 		}
 		return code;
 	}
-	
-	//관리자 정보 수정
+
+	// 관리자 정보 수정
 	public int UserUpdate(MemberDTO UpdateDto) {
-		
+
 		conn();
-		
+
 		try {
-			
+
 			String sql = "update fire_user set pw = ?, name = ?, tel = ? where id = ?";
-			
+
 			psmt = conn.prepareStatement(sql);
-			
+
 			psmt.setString(1, UpdateDto.getPw());
 			psmt.setString(2, UpdateDto.getName());
 			psmt.setString(3, UpdateDto.getTel());
 			psmt.setString(4, UpdateDto.getId());
-			
+
 			cnt = psmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return cnt;
 	}
-	
-	//정보 조회
-	public MemberDTO UserSelect(String id) {
 
-		MemberDTO dto = null;
-		
+	// 정보 조회
+	public ArrayList<MemberDTO> select() {
+
+		members = new ArrayList<MemberDTO>();
+
 		conn();
 
 		try {
 			String sql = "select * from fire_user where id=?";
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, id);
-
 			rs = psmt.executeQuery();
 
-			if (rs.next()) {
-				
-				dto = new MemberDTO();
-				
-				dto.setId(rs.getString("ID"));
-				dto.setPw(rs.getString("PW"));
-				dto.setName(rs.getString("NAME"));
-				dto.setTel(rs.getString("TEL"));
-				dto.setAddr(rs.getString("ADDR"));
-				dto.setB_name(rs.getString("B_NAME"));
-							
+			while (rs.next()) {
+				String email = rs.getString(1);
+				String pw = rs.getString(2);
+				String tel = rs.getString(3);
+				String addr = rs.getString(4);
+
+				dto = new MemberDTO(email, pw, tel, addr);
+				members.add(dto);
 			}
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return dto;
+		return members;
 	}
 }

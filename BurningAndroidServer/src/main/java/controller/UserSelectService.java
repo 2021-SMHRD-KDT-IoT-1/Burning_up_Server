@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import model.MemberDAO;
 import model.MemberDTO;
 
@@ -24,6 +26,19 @@ public class UserSelectService extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
+		MemberDAO dao = new MemberDAO();
+		dao.select();
+		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>(dao.select());
+		
+		Gson gson = new Gson();
+		
+		//Java 객체 -> JSON 문자열 변환
+		String jsonArray = gson.toJson(members);
+		
+		System.out.println(jsonArray);
+		
+		//요청한 곳으로 데이터 전송
+		out.print(jsonArray);
 		
 		
 		
