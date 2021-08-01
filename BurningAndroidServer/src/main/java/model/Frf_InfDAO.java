@@ -42,6 +42,27 @@ public class Frf_InfDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int upload(Frf_InfDTO dto) {
+		
+		conn();
+		
+		try {
+			String sql = "insert into FRF_INF values(FRF_NUM2.nextval, ?, ?, sysdate)";
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dto.getFrf_tlt());
+			psmt.setString(2, dto.getFrf_cnt());
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
 
 
 }
