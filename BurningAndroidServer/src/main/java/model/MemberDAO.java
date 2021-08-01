@@ -12,8 +12,6 @@ public class MemberDAO {
 	PreparedStatement psmt = null;
 	int cnt = 0;
 	ResultSet rs = null;
-	MemberDTO dto = null;
-	ArrayList<MemberDTO> list = null;
  
 	public void conn() {
 		try {
@@ -159,31 +157,31 @@ public class MemberDAO {
 	}
 	
 	//정보 조회
-	public ArrayList<MemberDTO> UserSelect(MemberDTO SelectDto) {
+	public MemberDTO UserSelect(String id) {
 
-		list = new ArrayList<MemberDTO>();
-
+		MemberDTO dto = null;
+		
 		conn();
 
 		try {
 			String sql = "select * from fire_user where id=?";
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, SelectDto.getId());
+			psmt.setString(1, id);
 
 			rs = psmt.executeQuery();
 
-			while (rs.next()) {
-				String id = rs.getString("ID");
-				String pw = rs.getString("PW");
-				String name = rs.getString("NAME");
-				String tel = rs.getString("TEL");
-				String addr = rs.getString("ADDR");
-				String b_name = rs.getString("B_NAME");
+			if (rs.next()) {
 				
-				dto = new MemberDTO(id, pw, name, tel, addr, b_name);
-				list.add(dto);
-			
+				dto = new MemberDTO();
+				
+				dto.setId(rs.getString("ID"));
+				dto.setPw(rs.getString("PW"));
+				dto.setName(rs.getString("NAME"));
+				dto.setTel(rs.getString("TEL"));
+				dto.setAddr(rs.getString("ADDR"));
+				dto.setB_name(rs.getString("B_NAME"));
+							
 			}
 
 		} catch (SQLException e) {
@@ -191,6 +189,6 @@ public class MemberDAO {
 		} finally {
 			close();
 		}
-		return list;
+		return dto;
 	}
 }

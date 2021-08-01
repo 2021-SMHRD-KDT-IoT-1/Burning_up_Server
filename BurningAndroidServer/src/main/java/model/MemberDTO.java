@@ -43,6 +43,9 @@ public class MemberDTO {
 		this.tel = tel;
 	}
 	
+	public MemberDTO() {
+	}
+
 	public String getId() {
 		return id;
 	}
