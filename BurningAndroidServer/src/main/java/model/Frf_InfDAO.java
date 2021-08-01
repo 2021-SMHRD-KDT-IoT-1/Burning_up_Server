@@ -43,6 +43,7 @@ public class Frf_InfDAO {
 		}
 	}
 	
+	//공지사항 작성
 	public int upload(Frf_InfDTO dto) {
 		
 		conn();
