@@ -1,6 +1,7 @@
 package model;
 
 public class Frf_InfDTO {
+	
 	private int frf_num;
 	private String frf_tlt;
 	private String frf_cnt;
@@ -13,14 +14,15 @@ public class Frf_InfDTO {
 		this.frf_cnt = frf_cnt;
 		this.frf_dt = frf_dt;
 	}
-
+	
 	public Frf_InfDTO(String frf_tlt, String frf_cnt, String frf_dt) {
 		super();
+		this.frf_num = frf_num;
 		this.frf_tlt = frf_tlt;
 		this.frf_cnt = frf_cnt;
 		this.frf_dt = frf_dt;
 	}
-	
+
 	public int getFrf_num() {
 		return frf_num;
 	}
@@ -52,7 +54,7 @@ public class Frf_InfDTO {
 	public void setFrf_dt(String frf_dt) {
 		this.frf_dt = frf_dt;
 	}
-
+	
 	
 }
 
