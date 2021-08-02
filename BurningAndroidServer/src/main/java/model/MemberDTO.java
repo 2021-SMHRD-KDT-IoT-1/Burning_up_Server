@@ -42,6 +42,11 @@ public class MemberDTO {
 		this.name = name;
 		this.tel = tel;
 	}
+	public MemberDTO(String id) {
+		super();
+		this.id = id;
+		
+	}
 	
 	public MemberDTO() {
 	}

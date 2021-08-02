@@ -159,7 +159,7 @@ public class MemberDAO {
 	}
 
 	// 정보 조회
-	public ArrayList<MemberDTO> select() {
+	public ArrayList<MemberDTO> select(String idn) {
 
 		members = new ArrayList<MemberDTO>();
 
@@ -168,7 +168,7 @@ public class MemberDAO {
 		try {
 			String sql = "select * from fire_user where id=?";
 			psmt = conn.prepareStatement(sql);
-
+			psmt.setString(0, idn);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

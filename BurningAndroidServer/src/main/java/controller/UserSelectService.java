@@ -23,12 +23,12 @@ public class UserSelectService extends HttpServlet {
 		
 		//ÀÎÄÚµù
 		response.setContentType("application/json; charset=euc-kr");
-		
+		String id = request.getParameter("login_id");
 		PrintWriter out = response.getWriter();
 		
 		MemberDAO dao = new MemberDAO();
-		dao.select();
-		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>(dao.select());
+		dao.select(id);
+		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>(dao.select(id));
 		
 		Gson gson = new Gson();
 		
