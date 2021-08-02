@@ -174,10 +174,13 @@ public class MemberDAO {
 			while (rs.next()) {
 				String id = rs.getString(1);
 				String pw = rs.getString(2);
-				String tel = rs.getString(3);
-				String addr = rs.getString(4);
+				String name = rs.getString(3);
+				String tel = rs.getString(4);
+				String addr = rs.getString(5);
+				String b_name = rs.getString(6);
+				
 
-				dto = new MemberDTO(id, pw, tel, addr);
+				dto = new MemberDTO(id, pw, name, tel, addr,b_name);
 				members.add(dto);
 			}
 
