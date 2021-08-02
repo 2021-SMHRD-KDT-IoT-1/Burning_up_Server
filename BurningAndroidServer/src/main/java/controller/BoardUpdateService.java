@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,11 +32,15 @@ public class BoardUpdateService extends HttpServlet {
 			Frf_InfDAO dao = new Frf_InfDAO();
 
 			int cnt = dao.upload(dto);
+			
+			PrintWriter out = response.getWriter();
 
 			if (cnt > 0) {
 				System.out.println("파일 업로드 성공!");
+				out.print(1);
 			} else {
 				System.out.println("파일 업로드 실패!");
+				out.print(0);
 			}
 
 	}
