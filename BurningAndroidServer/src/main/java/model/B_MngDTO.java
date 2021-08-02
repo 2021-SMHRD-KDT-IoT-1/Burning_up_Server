@@ -2,29 +2,29 @@ package model;
 
 public class B_MngDTO {
 
-	private int BLD_FLR;
-	private String BLD_DWG;
+	private int bld_flr;
+	private String bld_dwg;
 	
-	public B_MngDTO(int bLD_FLR, String bLD_DWG) {
+	public B_MngDTO(int bld_flr, String bld_dwg) {
 		super();
-		BLD_FLR = bLD_FLR;
-		BLD_DWG = bLD_DWG;
+		this.bld_flr = bld_flr;
+		this.bld_dwg = bld_dwg;
 	}
 
-	public int getBLD_FLR() {
-		return BLD_FLR;
+	public int getBld_flr() {
+		return bld_flr;
 	}
 
-	public void setBLD_FLR(int bLD_FLR) {
-		BLD_FLR = bLD_FLR;
+	public void setBld_flr(int bld_flr) {
+		this.bld_flr = bld_flr;
 	}
 
-	public String getBLD_DWG() {
-		return BLD_DWG;
+	public String getBld_dwg() {
+		return bld_dwg;
 	}
 
-	public void setBLD_DWG(String bLD_DWG) {
-		BLD_DWG = bLD_DWG;
+	public void setBld_dwg(String bld_dwg) {
+		this.bld_dwg = bld_dwg;
 	}
 	
 }
