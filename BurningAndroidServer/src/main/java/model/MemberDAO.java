@@ -172,12 +172,12 @@ public class MemberDAO {
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String email = rs.getString(1);
+				String id = rs.getString(1);
 				String pw = rs.getString(2);
 				String tel = rs.getString(3);
 				String addr = rs.getString(4);
 
-				dto = new MemberDTO(email, pw, tel, addr);
+				dto = new MemberDTO(id, pw, tel, addr);
 				members.add(dto);
 			}
 
