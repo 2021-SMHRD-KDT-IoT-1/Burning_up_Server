@@ -168,7 +168,7 @@ public class MemberDAO {
 		try {
 			String sql = "select * from fire_user where id=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(0, idn);
+			psmt.setString(1, idn);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
