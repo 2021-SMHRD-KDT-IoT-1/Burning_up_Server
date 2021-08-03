@@ -22,10 +22,10 @@ public class UserUpdateService extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberDTO dto = (MemberDTO)session.getAttribute("dto");
 		
-		String id = dto.getId();
-		String pw = request.getParameter("join_pw");
-		String name = request.getParameter("join_naem");
-		String tel = request.getParameter("join_tel");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
 		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO UpdateDto = new MemberDTO(id, pw, name, tel);
