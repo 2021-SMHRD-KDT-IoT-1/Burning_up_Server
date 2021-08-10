@@ -48,7 +48,7 @@ public class F_AgnDAO {
 
 		try {
 
-			String sql = "update FRXT_AGN set AGN_VALUE = ? where AGN_NUM = 1" ;
+			String sql = "update FRXT_AGN set AGN_VALUE = ? where AGN_NUM=1" ;
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, gyro);
 			

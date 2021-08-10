@@ -164,6 +164,7 @@ select * from FRXT_CHCK;
 select * from FRXT_AGN;
 select * from FRXT_PRE;
 
+
 -- 테이블 삭제
 drop table FIRE_USER;
 drop table BLD_MNG;

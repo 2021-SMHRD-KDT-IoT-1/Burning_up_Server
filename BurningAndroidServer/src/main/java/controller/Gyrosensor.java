@@ -18,21 +18,24 @@ public class Gyrosensor extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String gyroox = request.getParameter("gyroox");
+		
+		String number = request.getParameter("gyroox");
+		if (number == null) {
+		number = "1";
+		}
+		int num = Integer.parseInt(number);
+		
 
-		int num = Integer.parseInt(gyroox);
-		int cnt;
 		System.out.print("gyro :");
-		System.out.println(gyroox);
+		System.out.println(num);
 
 		F_AgnDAO dao = new F_AgnDAO();
-
-		if (num == 1) {
-			cnt = dao.Gyrosensor(num);
+		dao.Gyrosensor(num);
 			
 		}
+	
 		
 
 	}
 
-}
+
