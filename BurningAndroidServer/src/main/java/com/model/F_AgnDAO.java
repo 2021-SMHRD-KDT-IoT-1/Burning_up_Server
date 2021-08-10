@@ -42,5 +42,48 @@ public class F_AgnDAO {
 			e.printStackTrace();
 		}
 	}
+	public int Gyrosensor(int gyro) {
+
+		conn();
+
+		try {
+
+			String sql = "update FRXT_AGN set AGN_VALUE = ? where AGN_NUM = 1" ;
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, gyro);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+	public String showGyro(String agn) {
+		String value ="1";
+		conn();
+
+		try {
+			String sql = "select * from FRXT_AGN where AGN_VALUE = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, agn);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				value = rs.getString(3);
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return value;
+	}
 	
 }
