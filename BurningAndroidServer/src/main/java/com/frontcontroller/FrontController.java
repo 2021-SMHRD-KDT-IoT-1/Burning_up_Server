@@ -58,10 +58,6 @@ public class FrontController extends HttpServlet {
 
 			command = new WebLogoutServiceCon();
 			
-		}else if(resultURI.equals("WebMDeleteServiceCon.do")) {
-			
-			command = new MDeleteServiceCon();
-			
 		}else if(resultURI.equals("WebDeleteServiceCon.do")) {
 			
 			command = new WebDeleteServiceCon();
