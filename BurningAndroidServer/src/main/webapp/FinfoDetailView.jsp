@@ -5,8 +5,9 @@
 <%@page import="com.model.F_InfoDAO"%>
 <%@page import="com.model.UserDAO"%>
 <%@page import="com.model.UserDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%--<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%> --%>
+<%@ page language="java" contentType="application/vnd.ms-excel;charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -93,6 +94,15 @@
 											<header class="major">
 												<h3><%=cdto.getF_nick() %>,<%=cdto.getChck_date() %>점검 내역</h3>
 											</header>
+											<%
+											//******************************MS excel******************************
+ 
+										    // MS excel로 다운로드/실행, filename에 저장될 파일명을 적어준다.
+										 
+										    response.setHeader("Content-Disposition","attachment;filename=F_clc.xls");
+										 
+										    response.setHeader("Content-Description", "JSP Generated Data");
+										    %>
 											<table id="list">
 												<tr>
 													<td>점검 항목</td>

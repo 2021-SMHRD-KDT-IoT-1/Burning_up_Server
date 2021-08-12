@@ -1,8 +1,4 @@
-<%@page import="com.model.F_ChckDAO"%>
-<%@page import="com.model.F_ChckDTO"%>
-<%@page import="com.model.F_InfoDTO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.model.F_InfoDAO"%>
+<%@page import="com.model.F_ClcDAO"%>
 <%@page import="com.model.UserDAO"%>
 <%@page import="com.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -21,9 +17,11 @@
 	<body>
 
 	<%
-	F_InfoDAO dao = new F_InfoDAO();
-	ArrayList<F_InfoDTO> Flist = dao.FinfoShow();
-	UserDTO dto = (UserDTO)session.getAttribute("dto");
+	UserDTO dto = (UserDTO) session.getAttribute("dto");
+	UserDAO dao = new UserDAO();
+	
+	F_ClcDAO cldao = new F_ClcDAO();
+	
 	%>
 
 	<!-- Wrapper -->
@@ -43,6 +41,7 @@
 						<%} %>	
 						</nav>
 					</header>
+					
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
@@ -65,61 +64,72 @@
 								<img src="images/pic07.jpg" alt="" />
 							</span>
 							<header class="major">
-								<h1>소화기 점검 내역</h1>
+								<h1>Landing</h1>
 							</header>
 							<div class="content">
-								<p></p>
+								<p>Lorem ipsum dolor sit amet nullam consequat<br />
+								sed veroeros. tempus adipiscing nulla.</p>
 							</div>
 						</div>
 					</section>
 
 				<!-- Main -->
 					<div id="main">
-
 						<!-- Two -->
 							<section id="two" class="spotlights">
 								<section>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>층별 점검내역</h3>
+												<h3>소화기 수거 신청서</h3>
 											</header>
-											<form method="post" action="#">
-												<div class="row gtr-uniform">
-													<div class="col-12">
-														<select name="demo-category" id="demo-category" style="background: rgba(40, 47, 75, 3); margin-bottom: 20px;">
-															<option value="">&nbsp;&nbsp;&nbsp;층 선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;</option>
-															<option value="1">&nbsp;&nbsp;1층</option>
-															<option value="1">&nbsp;&nbsp;2층</option>
-															<option value="1">&nbsp;&nbsp;3층</option>
-														</select>
-													</div>
-													<div class="col-12">
-														<ul class="actions">
-															<li><input type="submit" value="화재 알림" class="primary" /></li>
-														</ul>
-													</div>
-												</div>
-											</form>
-											<table >
-												<tr>
-													<td>층</td>
-													<td>설치장소</td>
-													<td>설치일</td>
-												</tr>
-												
-												<%for(int i=0; i<Flist.size();i++){ %>
+											<form action="WebFclcWriter.do" method="post" enctype="multipart/form-data">
+												<table style="width:100%; margin-left: auto; margin-right: auto;">
 													<tr>
-														<td><%=Flist.get(i).getBld_flr() %>층</td>
-														<td> <a href="FinfoView.jsp?f_nick=<%= Flist.get(i).getF_nick() %>"><%=Flist.get(i).getF_nick()%></a></td>
-														<td><%=Flist.get(i).getNfc_regi() %></td>
-												<%} %>	
-											</table>
-											<a href="main.jsp"><button id="writer">홈으로가기</button></a>
+														<td align="center">건물명</td>
+														<td><%=dto.getB_name() %></td>
+													</tr>
+													<tr>
+														<td align="center">소화기 고유번호</td>
+														<td><input type="text" name="nfc_num"></td>
+													</tr>
+													<tr>
+														<td align="center">수거 희망일</td>
+														<td align="center"><input type="date" name="clc_dt"></td>
+													</tr>
+													<tr>
+														<td align="center">수거 사유</td>
+														<td align="center">
+															<select name="clc_dsp" id="demo-category" style="background: rgba(40, 47, 75, 3); margin-bottom: 20px;">
+																<option value="null">--수거 사유--</option>
+																<option value="1">사용</option>
+																<option value="2">노후</option>
+																<option value="3">부식</option>
+															</select>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2" align="center">
+															<input type="reset" value="초기화">
+															<input type="submit" value="작성하기">
+														</td>
+													</tr>
+												</table>
+											</form>	
 										</div>
 									</div>
 								</section>
 					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="copyright">
+								<li>&copy; GIFTLIFE</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
 			</div>
 
 		<!-- Scripts -->

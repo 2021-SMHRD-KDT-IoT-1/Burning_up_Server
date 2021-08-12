@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.command.Command;
 import com.controller_Class.WebBmngWriter;
 import com.controller_Class.WebDeleteServiceCon;
+import com.controller_Class.WebFclcWriter;
 import com.controller_Class.WebJoinServiceCon;
 import com.controller_Class.WebLoginServiceCon;
 import com.controller_Class.WebLogoutServiceCon;
@@ -57,6 +58,10 @@ public class FrontController extends HttpServlet {
 
 			command = new WebLogoutServiceCon();
 			
+		}else if(resultURI.equals("WebMDeleteServiceCon.do")) {
+			
+			command = new MDeleteServiceCon();
+			
 		}else if(resultURI.equals("WebDeleteServiceCon.do")) {
 			
 			command = new WebDeleteServiceCon();
@@ -72,6 +77,9 @@ public class FrontController extends HttpServlet {
 		}else if(resultURI.equals("WebBmngWriter.do")) {
 			
 			command = new WebBmngWriter();
+		}else if(resultURI.equals("WebFclcWriter.do")) {
+			
+			command = new WebFclcWriter();
 		}
 		
 		String moveURL = command.execute(request, response);
